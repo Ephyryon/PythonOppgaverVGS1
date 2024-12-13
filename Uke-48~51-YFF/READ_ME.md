@@ -1,0 +1,3 @@
+God aften.
+
+Jeg er Jonatan og dette er et program som tar in et text document (.txt) og dermed sorterer det etter hvilket land det er fra. Navnet blir forandret til (SendersNavn_Land.Region(F-eks: Drammen)). Alt man trenger å gjøre er å dra den filen man vil arkivere/sortere så gjør systemet det automatisk. Du kan også droppe inn "folders" og den vil sortere alle .txt filene i folderen. Derimot kan det skje feil hvis det er engelske ord i teksten. Og noen navn er sett av spaCy som producter. Eksempel er: Zara
