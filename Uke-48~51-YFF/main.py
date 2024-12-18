@@ -1,9 +1,5 @@
 import spacy
 import os
-import re
-from datetime import datetime
-import tkinter as tk 
-from tkinter import filedialog
 from tkinterdnd2 import TkinterDnD, DND_FILES
 
 nlp = spacy.load('nb_core_news_lg')
