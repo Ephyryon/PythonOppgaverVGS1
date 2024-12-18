@@ -15,6 +15,7 @@ countries = ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua 
 
 Fregion = ["beach", "park", "forest", "lake", "river", "mountain", "desert", "island", "valley"]
 
+# Finder informasjon fra filene. Eksempler er Land, Region og senderens navn.
 def extract_info(file_content):
     doc = nlp(file_content)
     for ent in doc.ents:
@@ -57,6 +58,7 @@ def extract_info(file_content):
 
     return name, origin, country
 
+# Gir filen et nytt navn. Dermed lagrer den filen i den riktige folderen basert på hvilket land filen er fra ifølge filens inhold.
 def process_file(file_path):
     with open(file_path, 'r') as f:
         file_content = f.read()
@@ -82,6 +84,7 @@ def process_file(file_path):
 
     print(f"File moved and renamed to: {new_file_path}")
 
+# Før den prosseserer en fil vil den sjekke om det er en folder. Hvis det er en folder vil den ta ut alle text document filenen i folderen og sortere dem individuelt.
 def process_folder(folder_path):
     for root, dirs, files in os.walk(folder_path):
         for file in files:
@@ -89,6 +92,7 @@ def process_folder(folder_path):
                 file_path = os.path.join(root, file)
                 process_file(file_path)
 
+# Denne tar å utfører de andre prossesene når en fil eller folder blir droppet oppi boksen.
 def drop(event):
     path = event.data.strip('{}')
     if os.path.isdir(path):
@@ -100,10 +104,12 @@ def drop(event):
         print(f"Path: {path}")
         print("Solve: Please drop a .txt file or a folder containing .txt files.")
 
+# Her blir størrelsen og titelen på app vinduet definert.
 root = TkinterDnD.Tk()
 root.title("Text file drop box.")
 root.geometry("400x300")
 
+# Her bestemmer jeg hva vinduet skal være/gjøre. Her har jeg bestemt at vinduet skal være en drop boks.
 root.drop_target_register(DND_FILES)
 root.dnd_bind('<<Drop>>', drop)
 
