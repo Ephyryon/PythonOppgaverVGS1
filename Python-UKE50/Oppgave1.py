@@ -34,6 +34,7 @@ while exit1:
                     tM = 0
             bD = tM + tD
             BD = 365 - bD
+            BD = (365 - BD)//2
             print(bD)
             print(f"I dag er du {ans} år gammel.")
             print(f"Bursdagen din er om {BD} dager.")
