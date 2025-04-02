@@ -1,17 +1,43 @@
 import pygame
 
-score = 0
-
 questions = [
     {"question": "Hvor (sted) er påsken fra?", "options": {"Nord-Europa", "Midt-Østen", "West-Europa", "Sentral-Europa"}, "answer": "Midt-Østen"},
+    {"question": "Svaret var Midt-Østen", "options": {"Neste"}, "answer": ""},
     {"question": "Hvilke religion kommer påske fra?", "options": {"Kristendommen", "Romersk paganisme", "Jødedommen", "Hellenisk paganisme"}, "answer": "Kristendommen"},
+    {"question": "Svaret var Kristendommen", "options": {"Neste"}, "answer": ""},
     {"question": "Hva feirer vi i påsken?", "options": {"Jul", "Jesus' oppstandelse", "Halloween"}, "answer": "Jesus' oppstandelse"},
+    {"question": "Svaret var Jesus' oppstandelse", "options": {"Neste"}, "answer": ""},
     {"question": "Hva heter den tradisjonelle norske påskedesserten?", "options": {"Riskrem", "Karamellpudding", "Appelsin"}, "answer": "Appelsin"},
+    {"question": "Svaret var Appelsin", "options": {"Neste"}, "answer": ""},
+    {"question": "Hvilket dyr blir ofte koblet sammen med påsken?", "options": {"And", "Hare", "Lamb", "Rådyr"}, "answer": "Hare"},
+    {"question": "Svaret var Hare", "options": {"Neste"}, "answer": ""},
+    {"question": "Hvilket land forbindes med tradisjonen om påskeharen?", "options": {"Tyskland", "Frankrike", "Italia", "Norge"}, "answer": "Tyskland"},
+    {"question": "Svaret var Tyskland", "options": {"Neste"}, "answer": ""},
+    {"question": "Hva symboliserer påskeegget?", "options": {"Liv og oppstandelse", "Jesus' lidelse", "Judas' svik", "Disiplenes tro"}, "answer": "Liv og oppstandelse"},
+    {"question": "Svaret var Liv og oppstandelse", "options": {"Neste"}, "answer": ""},
+    {"question": "Hvor mange dager varer fasten før påske?", "options": {"25", "40", "50", "30"}, "answer": "40"},
+    {"question": "Svaret var 40", "options": {"Neste"}, "answer": ""},
+    {"question": "Hva er typisk norsk påskemat?", "options": {"Kylling", "Torsk", "Lam", "Kalkun"}, "answer": "Lam"},
+    {"question": "Svaret var Lam", "options": {"Neste"}, "answer": ""},
+    {"question": "Hvilken farge forbindes ofte med påsken i kristendommen?", "options": {"Grønn", "Rød", "Blå", "Lilla"}, "answer": "Lilla"},
+    {"question": "Svaret var Lilla", "options": {"Neste"}, "answer": ""},
+    {"question": "Hvilket land produserer mest påskesjokolade i verden?", "options": {"Tyskland", "Sveits", "Storbritannia", "USA"}, "answer": "Storbritannia"},
+    {"question": "Svaret var Storbritannia", "options": {"Neste"}, "answer": ""},
+    {"question": "Hva er 'Påskeøya' mest kjent for?", "options": {"Store steinstatuer", "Store påskefeiringer", "Vulkanutbrudd", "Fargerike hus"}, "answer": "Store steinstatuer"},
+    {"question": "Svaret var Store steinstatuer", "options": {"Neste"}, "answer": ""},
+    {"question": "Hva er 'påskelam' et symbol på i kristendommen?", "options": {"Guds vrede", "Jesu offerdød", "Påskens glede", "Jomfru Marias renhet"}, "answer": "Jesu offerdød"},
+    {"question": "Svaret var Jesu offerdød", "options": {"Neste"}, "answer": ""},
+    {"question": "Hvorfor kalles det 'Gul påske'?", "options": {"Fordi påskeliljer og kyllinger er gule", "Fordi kirken bruker gult under påskemessen", "Fordi solen alltid skinner i påsken", "Fordi Jesus hadde en gul kappe"}, "answer": "Fordi påskeliljer og kyllinger er gule"},
+    {"question": "Svaret var Fordi påskeliljer og kyllinger er gule", "options": {"Neste"}, "answer": ""},
+    {"question": "Hva heter fjellvettregel nummer 1, som mange forbinder med påsken?", "options": {"Ta alltid med ekstra klær", "Ikke gå alene på tur", "Planlegg turen og meld fra hvor du går", "Lytt til værmeldingen"}, "answer": "Planlegg turen og meld fra hvor du går"},
+    {"question": "Svaret var Planlegg turen og meld fra hvor du går", "options": {"Neste"}, "answer": ""},
     {"question": "Gratulerer! Du gjorde ferdig quizen.", "options": {"Prøv igjen.", "Avslutt"}, "answer": ""}
 ]
 
+score = 0
+
 pygame.init()
-WIDTH, HEIGHT = 600, 400
+WIDTH, HEIGHT = 800, 400
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Påskequiz")
 
@@ -29,7 +55,7 @@ def button_create(options):
     for i, option in enumerate(options):
         text_width, text_height = font.size(option)
         button_width = text_width + 40
-        x = 275 - text_width//2
+        x = (WIDTH - text_width) // 2.1
         y = 90 + (i*(50+button_spacing))
         rect = pygame.Rect(x, y, button_width, button_height)
         buttons.append((rect, option, i))
@@ -75,7 +101,6 @@ while running:
                         buttons = button_create(questions[ques]["options"])
                     if text == answer:
                         score += 1
-                    print(score)
                     if ques < len(questions) - 1:
                         ques += 1
                         buttons = button_create(questions[ques]["options"])
